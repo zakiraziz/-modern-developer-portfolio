@@ -1,0 +1,199 @@
+/* src/styles/global.css */
+@import "modern-normalize/modern-normalize.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/blue-dark.css";
+
+/* CSS Variables Setup */
+:root,
+:root[data-theme="light"] {
+  /* Light Theme */
+  --surface-1: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #f1f5f9;
+  --text-1: #0f172a;
+  --text-2: #334155;
+  --primary: var(--blue-9);
+  --primary-hover: var(--blue-10);
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme */
+    --surface-1: #020617;
+    --surface-2: #0f172a;
+    --surface-3: #1e293b;
+    --text-1: #f8fafc;
+    --text-2: #e2e8f0;
+    --primary: var(--blue-8);
+    --primary-hover: var(--blue-9);
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+
+/* Modern Reset Extensions */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Fluid Typography */
+html {
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-size: clamp(1rem, 0.75rem + 1vw, 1.25rem);
+  line-height: 1.6;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout System */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  margin: 0;
+}
+
+/* Container Queries */
+@container (width > 600px) {
+  .card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Modern Utility Classes */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space, 1rem);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space, 1rem);
+}
+
+/* Advanced Interactions */
+.interactive {
+  --highlight-size: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.interactive::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--highlight-size) * -1);
+  background: var(--highlight-color, currentColor);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.interactive:hover::after {
+  opacity: 0.1;
+}
+
+/* Scroll Snap */
+.scroll-snap {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  overflow-x: auto;
+}
+
+.scroll-snap > * {
+  scroll-snap-align: start;
+}
+
+/* View Transitions API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+}
+
+/* Modern Form Styles */
+input,
+textarea {
+  --shadow: 0 0 0 1px var(--surface-3);
+  box-shadow: var(--shadow);
+  transition: box-shadow 200ms ease;
+}
+
+input:focus,
+textarea:focus {
+  --shadow: 0 0 0 2px var(--primary);
+  outline: none;
+}
+
+
+@media (--motion) {
+  .fade-in {
+    animation: fade-in 500ms ease;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logical Properties */
+.flow > * + * {
+  margin-block-start: var(--space, 1em);
+}
+
+/* Cascade Layers */
+@layer base {
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--surface-2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--primary), var(--blue-7));
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Houdini Paint API */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-border {
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(var(--gradient-angle), var(--primary), var(--blue-7)) border-box;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  to { --gradient-angle: 360deg; }
+}
