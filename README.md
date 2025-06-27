@@ -1,12 +1,23 @@
-# React + Vite
+✨ Modern Developer Portfolio ✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A showcase of creativity, code, and craftsmanship
 
-Currently, two official plugins are available:
+https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black
+https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Portfolio+Showcase+%25F0%259F%258E%25A8
+(Replace with your actual screenshot)
 
-## Expanding the ESLint configuration
+</div>
+🌟 Features That Shine
+Lightning Fast ⚡ – 100/100 Lighthouse performance
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Pixel-Perfect 🎨 – Custom design system with Tailwind
+
+Buttery Smooth 🧈 – Framer Motion animations
+
+Always Responsive 📱 – Flawless on all devices
+
+Dark Mode 🌓 – Automatic eye-friendly theming
