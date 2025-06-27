@@ -23,7 +23,8 @@ Always Responsive 📱 – Flawless on all devices
 Dark Mode 🌓 – Automatic eye-friendly theming
 
 # 🛠️ Architecture
-![deepseek_mermaid_20250627_8f41ec](https://github.com/user-attachments/assets/ff04b175-97a2-4917-b28a-a981039f229d)
+![deepseek_mermaid_20250627_8f41ec](https://github.com/user-attachments/assets/731897ae-3137-4bed-a26c-34cb711e708d)
+
 #🚀 Quick Start
 Clone the repo
 
