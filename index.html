@@ -1,13 +1,147 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="A modern React application built with Vite" />
+    
+    <!-- Favicon & PWA Assets -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <link rel="modulepreload" href="/src/main.jsx" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Vite + React" />
+    <meta property="og:description" content="A modern React application built with Vite" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="/social-preview.png" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vite + React" />
+    <meta name="twitter:description" content="A modern React application built with Vite" />
+    <meta name="twitter:image" content="/social-preview.png" />
+    
     <title>Vite + React</title>
+    
+    <!-- Critical CSS (inlined for better performance) -->
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      #root {
+        min-height: 100%;
+        isolation: isolate;
+      }
+      /* Loading animation styles */
+      .loading-spinner {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .js-enabled .loading-spinner {
+        display: block;
+      }
+    </style>
+    
+    <!-- No-JS fallback -->
+    <noscript>
+      <style>
+        .no-js-message {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          padding: 1rem;
+          background: #ff4444;
+          color: white;
+          text-align: center;
+          z-index: 9999;
+        }
+      </style>
+      <div class="no-js-message">
+        JavaScript is required to run this application. Please enable JavaScript in your browser.
+      </div>
+    </noscript>
   </head>
-  <body>
+  <body class="antialiased text-gray-900 bg-gray-50">
+    <!-- Loading fallback (replaced by React) -->
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+    
+    <!-- App Mount Point -->
     <div id="root"></div>
+    
+    <!-- No-JS fallback content -->
+    <noscript>
+      <div style="text-align: center; padding: 2rem;">
+        <h1>Welcome to our application</h1>
+        <p>To use this app, please enable JavaScript in your browser settings.</p>
+        <p>Alternatively, you can <a href="/contact">contact us</a> for assistance.</p>
+      </div>
+    </noscript>
+    
+    <!-- Scripts -->
+    <script>
+      // Add js-enabled class for progressive enhancement
+      document.documentElement.classList.add('js-enabled');
+      
+      // Service worker registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(
+            registration => {
+              console.log('ServiceWorker registration successful');
+            },
+            err => {
+              console.log('ServiceWorker registration failed: ', err);
+            }
+          );
+        });
+      }
+    </script>
+    
+    <!-- Main app script -->
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Performance monitoring (example) -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function(){
+          const timing = performance.timing;
+          const loadTime = timing.loadEventEnd - timing.navigationStart;
+          console.log('Page load time: ' + loadTime + 'ms');
+          
+          if (loadTime > 2000) {
+            // Potentially report slow loading to analytics
+            console.warn('Page load time exceeds 2 seconds');
+          }
+        }, 0);
+      });
+    </script>
   </body>
 </html>
